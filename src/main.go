@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"log"
 
 	"github.com/aws/aws-lambda-go/events"
@@ -11,6 +12,10 @@ import (
 var (
 	errNameNotProvided = errors.New("no name provided in HTTP body")
 )
+
+func init() {
+	fmt.Println("Init")
+}
 
 // Handler is the primary Lambda handler for the API
 func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
@@ -25,5 +30,6 @@ func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 }
 
 func main() {
+	fmt.Println("Main")
 	lambda.Start(Handler)
 }

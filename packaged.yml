@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  HelloFunction:
+    Properties:
+      CodeUri: s3://hello-world-go-xyz/eafe3c0bceb10d02e97c7016f2e9b814
+      Events:
+        GetEvent:
+          Properties:
+            Method: post
+            Path: /
+          Type: Api
+      Handler: handler
+      Runtime: go1.x
+      Tracing: Active
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31
